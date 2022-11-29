@@ -1,29 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20px">
 
     <TextView
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginTop="20px"
         android:text="@string/title_home" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         android:background="?android:attr/windowBackground"
         android:layout_alignParentBottom="true"
         app:menu="@menu/navigation" />
+    <TextView
+        android:text="rychrost"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="80dp"
+        android:layout_height="@dimen/input_space"
+        android:layout_below="@id/message"
+        android:id="@+id/textView1"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:text="čas"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/input_space"
+        android:layout_below="@id/textView1"
+        android:id="@+id/textView2"
+        android:layout_marginTop="0.0dp"
+        android:layout_marginRight="78.0dp" />
+    <EditText
+        android:inputType="number"
+        android:layout_width="251dp"
+        android:layout_height="@dimen/input_space"
+        android:layout_below="@id/speedValue"
+        android:id="@+id/editText1"
+        android:layout_toRightOf="@id/textView2"
+        android:layout_above="@id/textView2"
+        android:layout_marginLeft="100.0dp"
+        android:layout_marginTop="88.5dp" />
+    <TextView
+        android:text="vzdálenost"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/input_space"
+        android:layout_below="@id/textView2"
+        android:id="@+id/textView3"
+        android:layout_marginTop="0.0dp"
+        android:layout_marginRight="30.0dp" />
+    <EditText
+        android:inputType="number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/speedValue"
+        android:id="@+id/editText1"
+        android:layout_toRightOf="@id/textView2"
+        android:layout_above="@id/textView2"
+        android:layout_marginLeft="100.0dp"
+        android:layout_marginTop="88.5dp" />
+    <EditText
+        android:inputType="number"
+        android:layout_width="251dp"
+        android:layout_height="@dimen/input_space"
+        android:layout_below="@id/speedValue"
+        android:id="@+id/editText2"
+        android:layout_toRightOf="@id/textView2" />
+    <EditText
+        android:inputType="number"
+        android:layout_width="251dp"
+        android:layout_height="@dimen/input_space"
+        android:layout_toRightOf="@id/textView1"
+        android:id="@+id/speedValue"
+        android:layout_marginTop="0.0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/message" />
+    <EditText
+        android:inputType="number"
+        android:layout_width="251dp"
+        android:layout_height="@dimen/input_space"
+        android:layout_below="@id/editText2"
+        android:id="@+id/editText3"
+        android:layout_toRightOf="@id/textView3" />
+    <Button
+        android:text="přepočítat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView3"
+        android:id="@+id/button1" />
 
 </RelativeLayout>
