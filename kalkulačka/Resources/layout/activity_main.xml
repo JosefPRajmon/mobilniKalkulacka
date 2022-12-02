@@ -23,7 +23,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="364.0dp"
-        android:layout_height="65.0dp"
+        android:layout_height="60.5dp"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         android:background="?android:attr/windowBackground"
@@ -31,7 +31,7 @@
         app:menu="@menu/navigation" />
 
     <RelativeLayout
-        android:layout_width="367.5dp"
+        android:layout_width="356.5dp"
         android:layout_height="244.0dp"
         android:layout_below="@id/message"
         android:id="@+id/calculateLayout"
@@ -71,7 +71,8 @@
             android:layout_height="@dimen/input_space"
             android:layout_below="@id/speedValue"
             android:id="@+id/timeValue"
-            android:layout_toRightOf="@id/textView2" />
+            android:layout_toRightOf="@id/textView2"
+            android:text="" />
         <EditText
             android:inputType="number"
             android:layout_width="251dp"
@@ -86,20 +87,33 @@
             android:layout_width="251dp"
             android:layout_height="@dimen/input_space"
             android:layout_below="@id/timeValue"
-            android:id="@+id/editText3"
+            android:id="@+id/distanceValue"
             android:layout_toRightOf="@id/convertButton" />
         <Button
             android:text="přepočítat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/convertButton"
-            android:id="@+id/button1" />
+            android:id="@+id/calculateButton"
+            android:onClick=""/>
+        <TextView
+            android:text=""
+            android:textColor="@android:color/holo_red_dark"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/distanceValue"
+            android:id="@+id/calculateError"
+            android:layout_toRightOf="@id/calculateButton"
+            android:layout_marginTop="21.5dp"
+            android:layout_marginLeft="47.0dp" />
+
     </RelativeLayout>
     <TableLayout
         android:minWidth="25px"
         android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="423.5dp"
+        android:layout_width="324.5dp"
+        android:layout_height="424.5dp"
         android:id="@+id/tableLayout"
         android:visibility="invisible"
         android:layout_below="@id/message">
@@ -168,17 +182,49 @@
     <RelativeLayout
         android:minWidth="25px"
         android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="425.5dp"
+        android:layout_width="351.5dp"
+        android:layout_height="425.0dp"
         android:layout_below="@id/message"
         android:id="@+id/aboutLayout"
-        android:visibility="invisible" >
-        <AutoCompleteTextView
+        android:visibility="invisible">
+        <TextView
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="wrap_content"
+            android:layout_width="189.5dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView12"
             android:text="Kdyby pod balónky nebyla sytě zelenkavá tráva, ale třeba suchá silnice či beton, možná by bylo vidět jejich barevné stíny - to jak přes poloprůsvitné barevné balónky prochází ostré sluneční paprsky. Jenže kvůli všudy přítomné trávě jsou stíny balónků sotva vidět, natož aby šlo rozeznat, jakou barvu tyto stíny mají. Uvidět tak balónky náhodný kolemjdoucí, jistě by si pomyslel, že už tu takhle poletují snad tisíc let. Stále si víceméně drží výšku a ani do stran se příliš nepohybují. Proti slunci to vypadá, že se slunce pohybuje k západu rychleji než balónky, a možná to tak skutečně je. Nejeden filozof by mohl tvrdit, že balónky se sluncem závodí, ale fyzikové by to jistě vyvrátili. Z fyzikálního pohledu totiž balónky působí zcela nezajímavě. Nejvíc bezpochyby zaujmou děti - jedna malá holčička zrovna včera div nebrečela, že by snad balónky mohly prasknout. A co teprve ta stuha.Stuha, kterou je každý z trojice balónků uvázán, aby se nevypustil. Očividně je uvázaná dostatečně pevně, protože balónky skutečně neucházejí. To ale není nic zvláštního. Překvapit by však mohl fakt, že nikdo, snad krom toho, kdo balónky k obloze vypustil, netuší, jakou má ona stuha barvu. Je totiž tak lesklá, že za světla se v ní odráží nebe a za tmy zase není vidět vůbec. Když svítí slunce tak silně jako nyní, tak se stuha třpytí jako kapka rosy a jen málokdo vydrží dívat se na ni přímo déle než pár chvil. Jak vlastně vypadají ony balónky?. Ptají se často lidé." />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="359.5dp"
+        android:layout_height="440.0dp"
+        android:layout_below="@id/message"
+        android:id="@+id/notesLayout"
+        android:visibility="invisible">
+        <AutoCompleteTextView
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="333.5dp"
+            android:layout_height="129.5dp"
+            android:id="@+id/noteSaveInput"
+            android:text=" " />
+
+        <Button
+            android:text="Uložit poznámku"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noteSaveInput"
+            android:id="@+id/saveNoteButton"
+            android:onClick=""/>
+        <RelativeLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/saveNoteButton"
+            android:id="@+id/saveNodeLayout" />
+
     </RelativeLayout>
 
 </RelativeLayout>

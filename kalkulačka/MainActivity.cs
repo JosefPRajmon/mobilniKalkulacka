@@ -1,10 +1,18 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using Google.Android.Material.BottomNavigation;
+using Java.Lang;
+using Javax.Security.Auth;
+using System;
+using System.IO;
+using System.Reflection.Emit;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace kalkulačka
 {
@@ -14,7 +22,11 @@ namespace kalkulačka
         //layouts
         RelativeLayout calculateLayout;
         RelativeLayout aboutLayout;
+        RelativeLayout noteLayout;
+        RelativeLayout savedNodesLayout;
+
         TableLayout tableLayout;
+
 
         //text
         TextView textMessage;
@@ -27,10 +39,63 @@ namespace kalkulačka
 
             calculateLayout = FindViewById<RelativeLayout>(Resource.Id.calculateLayout);
             aboutLayout = FindViewById<RelativeLayout>(Resource.Id.aboutLayout);
+            noteLayout = FindViewById<RelativeLayout>(Resource.Id.notesLayout);
+            savedNodesLayout = FindViewById<RelativeLayout>(Resource.Id.saveNodeLayout);
+
+
             tableLayout = FindViewById<TableLayout>(Resource.Id.tableLayout);
+            //calculate
+            FindViewById<Button>(Resource.Id.calculateButton).Click += delegate { Calculate(); };
+            //add note
+            FindViewById<Button>(Resource.Id.saveNoteButton).Click += delegate {
+
+                
+            };
+
+
             textMessage = FindViewById<TextView>(Resource.Id.message);
+
+            
+
             BottomNavigationView navigation = FindViewById<BottomNavigationView>(Resource.Id.navigation);
             navigation.SetOnNavigationItemSelectedListener(this);
+        }
+        //calculate
+        void Calculate()
+        {
+            double timeNumValue = Convert.ToDouble(FindViewById<TextView>(Resource.Id.timeValue).Text);
+            double distanceNumValue = Convert.ToDouble(FindViewById<TextView>(Resource.Id.distanceValue).Text);
+            double speedNumValue = Convert.ToDouble(FindViewById<TextView>(Resource.Id.speedValue).Text);
+
+            TextView timeInput = FindViewById<TextView>(Resource.Id.timeValue);
+            TextView distanceInput = FindViewById<TextView>(Resource.Id.distanceValue);
+            TextView speedInput = FindViewById<TextView>(Resource.Id.speedValue);
+
+
+            //check only 2 input hawe value
+            if (timeInput.Text.Length >= 1 & distanceInput.Text.Length >= 1 &
+                speedInput.Text.Length >= 1)
+            {
+                FindViewById<TextView>(Resource.Id.calculateError).Text = "Zadejte prosím jen dvě hodnoty.";
+            }
+            else {
+                FindViewById<TextView>(Resource.Id.calculateError).Text = "";
+                //check inputs and choose numeric operation
+                if (timeInput.Text.Length >= 1 & distanceInput.Text.Length >= 1)
+                {
+                    speedInput.Text = $"{distanceNumValue / timeNumValue}";
+                }
+                else if (distanceInput.Text.Length >= 1 & speedInput.Text.Length >= 1) {
+                    timeInput.Text = $"{distanceNumValue / speedNumValue}";
+                }
+                else
+                {
+                    distanceInput.Text = $"{speedNumValue * timeNumValue}";
+                }
+            }
+
+
+
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -49,6 +114,7 @@ namespace kalkulačka
                     calculateLayout.Visibility = ViewStates.Visible;  
                     tableLayout.Visibility = ViewStates.Invisible;
                     aboutLayout.Visibility = ViewStates.Invisible;
+                    noteLayout.Visibility = ViewStates.Invisible;
                     return true;
                 case Resource.Id.navigation_about:
                     textMessage.SetText(Resource.String.title_about);
@@ -56,6 +122,7 @@ namespace kalkulačka
                     //leyout control
                     calculateLayout.Visibility = ViewStates.Invisible;
                     tableLayout.Visibility = ViewStates.Invisible;
+                    noteLayout.Visibility = ViewStates.Invisible;
                     aboutLayout.Visibility = ViewStates.Visible;
                     return true;
                 case Resource.Id.navigation_table:
@@ -64,7 +131,8 @@ namespace kalkulačka
                     //leyout control
                      calculateLayout.Visibility = ViewStates.Invisible;
                      tableLayout.Visibility = ViewStates.Visible;
-                    aboutLayout.Visibility = ViewStates.Invisible;
+                     aboutLayout.Visibility = ViewStates.Invisible;
+                     noteLayout.Visibility = ViewStates.Invisible;
                     return true;
                 case Resource.Id.navigation_feedback:
                     textMessage.SetText(Resource.String.title_feedback);
@@ -73,6 +141,7 @@ namespace kalkulačka
                     calculateLayout.Visibility = ViewStates.Invisible;
                     tableLayout.Visibility = ViewStates.Invisible;
                     aboutLayout.Visibility = ViewStates.Invisible;
+                    noteLayout.Visibility = ViewStates.Invisible;
                     return true;
                 case Resource.Id.navigation_myItens:
                     textMessage.SetText(Resource.String.title_myItems);
@@ -80,14 +149,18 @@ namespace kalkulačka
                     //leyout control
                      calculateLayout.Visibility = ViewStates.Invisible;
                      tableLayout.Visibility = ViewStates.Invisible;
-                    aboutLayout.Visibility = ViewStates.Invisible;
+                     aboutLayout.Visibility = ViewStates.Invisible;
+                     noteLayout.Visibility = ViewStates.Visible;
                     return true;
   //              case Resource.Id.navigation_notifications:
   //                  textMessage.SetText(Resource.String.title_notifications);
   //                  return true;
             }
+            
             return false;
+            
         }
+
     }
 }
 
