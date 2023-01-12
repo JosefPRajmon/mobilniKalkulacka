@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\wamp64\\www\\kalkulačka -  appmobile\\kalkulačka\\kalkulačka\\kalkulačka.csproj": {}
+    "D:\\wamp64\\www\\kalkulačka -  appmobile\\mobilniKalkulacka\\kalkulačka\\kalkulačka.csproj": {}
   },
   "projects": {
-    "D:\\wamp64\\www\\kalkulačka -  appmobile\\kalkulačka\\kalkulačka\\kalkulačka.csproj": {
+    "D:\\wamp64\\www\\kalkulačka -  appmobile\\mobilniKalkulacka\\kalkulačka\\kalkulačka.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\wamp64\\www\\kalkulačka -  appmobile\\kalkulačka\\kalkulačka\\kalkulačka.csproj",
+        "projectUniqueName": "D:\\wamp64\\www\\kalkulačka -  appmobile\\mobilniKalkulacka\\kalkulačka\\kalkulačka.csproj",
         "projectName": "kalkulačka",
-        "projectPath": "D:\\wamp64\\www\\kalkulačka -  appmobile\\kalkulačka\\kalkulačka\\kalkulačka.csproj",
+        "projectPath": "D:\\wamp64\\www\\kalkulačka -  appmobile\\mobilniKalkulacka\\kalkulačka\\kalkulačka.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "D:\\wamp64\\www\\kalkulačka -  appmobile\\kalkulačka\\kalkulačka\\obj\\",
+        "outputPath": "D:\\wamp64\\www\\kalkulačka -  appmobile\\mobilniKalkulacka\\kalkulačka\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [

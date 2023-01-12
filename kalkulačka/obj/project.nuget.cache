@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/2RQRwmD+6VWh7+6fJjsWdW8daG/0u/AGOlR6FuE1U05bbMgXALTfrCSpUrCd5UHFlqW5hJDf1CUCK1rxkHJqg==",
+  "dgSpecHash": "aC0YzUinsCkN+D+oaHyT51Pqw8lrL3YpWDOqKZ2HMe8zA/+Iwm0WA0K1flzrCYShfbl/2Pj3auZrLx2XbCzTzg==",
   "success": true,
-  "projectFilePath": "D:\\wamp64\\www\\kalkulačka -  appmobile\\kalkulačka\\kalkulačka\\kalkulačka.csproj",
+  "projectFilePath": "D:\\wamp64\\www\\kalkulačka -  appmobile\\mobilniKalkulacka\\kalkulačka\\kalkulačka.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\xamarin.androidx.activity\\1.1.0.3\\xamarin.androidx.activity.1.1.0.3.nupkg.sha512",
