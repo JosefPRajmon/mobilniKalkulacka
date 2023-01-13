@@ -16,6 +16,7 @@ final class RouterFactory
 	{
 		$router = new RouteList;
 		$router->addRoute('<presenter>/<action>', 'Dashboard:default');
+		$router->addRoute('/feedback/save/<title>/<feedback>', 'Feedback:save');
 		return $router;
 	}
 }
