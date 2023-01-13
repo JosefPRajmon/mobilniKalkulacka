@@ -4,4 +4,4 @@ services:
 	- App\Forms\SignInFormFactory
 	- App\Forms\SignUpFormFactory
 	- App\Router\RouterFactory::createRouter
-	- App\Api\DatabaseControlerApi
+	- App\Api\FeedbackApi

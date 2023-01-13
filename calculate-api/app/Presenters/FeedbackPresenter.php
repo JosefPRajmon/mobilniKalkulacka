@@ -2,14 +2,15 @@
 declare(strict_types=1);
 
 namespace App\Presenters;
+use Nette;
 
-class FeedbackPresenter extends Nette\Application\UI\Presenter {
-    /** @var \app\Api\FedbackCentr\FeedbackApi @inject */
+final class FeedbackPresenter extends Nette\Application\UI\Presenter {
+    /** @var \App\Api\FeedbackApi @inject */
     public $fedbackApi;
 
     public function actionSave($title, $feedback) {
         $this->fedbackApi->save($title, $feedback);
-        $this->redirect("this");
+          //  $this->redirect("this");
     }
 }
 

@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace app\Api\FedbackCentr;
+namespace app\Api;
 use Nette;
+use Nette\Application\Responses\JsonResponse;
 use Nette\Database\Context;
 
-final class FeedbackApi {
+class FeedbackApi {
     /** @var Nette\Database\Context */
     private $database;
 
@@ -20,6 +21,7 @@ final class FeedbackApi {
             "feedback" => $feedback
         ]);
     }
+
 }
 
 ?>
