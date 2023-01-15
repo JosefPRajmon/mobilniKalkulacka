@@ -68,21 +68,30 @@ namespace kalkulačka
         }
         private async void submitButton_Click()
         {
-            string title = FindViewById<TextView>(Resource.Id.tittleValue).Text;
-            string feedback = FindViewById<TextView>(Resource.Id.feedbackLayout).Text;
-            using (var client = new HttpClient())
+            try
             {
-                var values = new Dictionary<string, string>
+
+                string title = FindViewById<TextView>(Resource.Id.tittleValue).Text;
+                string feedback = FindViewById<TextView>(Resource.Id.feedbackvalue).Text;
+                using (var client = new HttpClient())
+                {
+                    var values = new Dictionary<string, string>
         {
            { "title", title },
            { "feedback", feedback }
         };
 
-                var content = new FormUrlEncodedContent(values);
+                    var content = new FormUrlEncodedContent(values);
 
-                var response = await client.PostAsync("http://192.168.1.32:8000/feedback/save", content);
+                    var response = await client.PostAsync("https://192.168.1.32:8000/feedback/save", content);
 
-                var responseString = await response.Content.ReadAsStringAsync();
+                    var responseString = await response.Content.ReadAsStringAsync();
+                }
+            }
+            catch (System.Exception)
+            {
+
+                throw;
             }
         }
 
