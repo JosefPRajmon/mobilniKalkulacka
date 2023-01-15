@@ -226,5 +226,49 @@
             android:id="@+id/saveNodeLayout" />
 
     </RelativeLayout>
+    <RelativeLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/feedbackLayout" >
+            <TextView
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView13" />
+            <TextView
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView13"
+                android:id="@+id/textView14" />
+        
+            <EditText
+                android:inputType="text"
+                android:layout_width="251dp"
+                android:layout_height="@dimen/input_space"
+                android:id="@+id/tittleValue"
+                android:layout_marginTop="0.0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/textView13" />
 
+        <EditText
+            android:inputType="text"
+            android:layout_width="251dp"
+            android:layout_height="@dimen/input_space"
+            android:id="@+id/feedbackvalue"
+            android:layout_marginTop="39.5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/textView14" />
+            <Button
+                android:text="Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/feedbackButton" />
+
+
+     </RelativeLayout>
 </RelativeLayout>

@@ -9,7 +9,9 @@ using Google.Android.Material.BottomNavigation;
 using Java.Lang;
 using Javax.Security.Auth;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Reflection.Emit;
 using System.Xml;
 using System.Xml.Serialization;
@@ -24,6 +26,7 @@ namespace kalkulačka
         RelativeLayout aboutLayout;
         RelativeLayout noteLayout;
         RelativeLayout savedNodesLayout;
+        RelativeLayout feedbackLayout;
 
         TableLayout tableLayout;
 
@@ -41,11 +44,14 @@ namespace kalkulačka
             aboutLayout = FindViewById<RelativeLayout>(Resource.Id.aboutLayout);
             noteLayout = FindViewById<RelativeLayout>(Resource.Id.notesLayout);
             savedNodesLayout = FindViewById<RelativeLayout>(Resource.Id.saveNodeLayout);
+            feedbackLayout = FindViewById<RelativeLayout>(Resource.Id.feedbackLayout);
 
 
             tableLayout = FindViewById<TableLayout>(Resource.Id.tableLayout);
             //calculate
             FindViewById<Button>(Resource.Id.calculateButton).Click += delegate { Calculate(); };
+            //feedback
+            FindViewById<Button>(Resource.Id.feedbackButton).Click += delegate { submitButton_Click(); };
             //add note
             FindViewById<Button>(Resource.Id.saveNoteButton).Click += delegate {
 
@@ -60,6 +66,27 @@ namespace kalkulačka
             BottomNavigationView navigation = FindViewById<BottomNavigationView>(Resource.Id.navigation);
             navigation.SetOnNavigationItemSelectedListener(this);
         }
+        private async void submitButton_Click()
+        {
+            string title = FindViewById<TextView>(Resource.Id.tittleValue).Text;
+            string feedback = FindViewById<TextView>(Resource.Id.feedbackLayout).Text;
+            using (var client = new HttpClient())
+            {
+                var values = new Dictionary<string, string>
+        {
+           { "title", title },
+           { "feedback", feedback }
+        };
+
+                var content = new FormUrlEncodedContent(values);
+
+                var response = await client.PostAsync("http://192.168.1.32:8000/feedback/save", content);
+
+                var responseString = await response.Content.ReadAsStringAsync();
+            }
+        }
+
+
         //calculate
         void Calculate()
         {
@@ -115,6 +142,7 @@ namespace kalkulačka
                     tableLayout.Visibility = ViewStates.Invisible;
                     aboutLayout.Visibility = ViewStates.Invisible;
                     noteLayout.Visibility = ViewStates.Invisible;
+                    feedbackLayout.Visibility = ViewStates.Invisible;
                     return true;
                 case Resource.Id.navigation_about:
                     textMessage.SetText(Resource.String.title_about);
@@ -124,6 +152,7 @@ namespace kalkulačka
                     tableLayout.Visibility = ViewStates.Invisible;
                     noteLayout.Visibility = ViewStates.Invisible;
                     aboutLayout.Visibility = ViewStates.Visible;
+                    feedbackLayout.Visibility = ViewStates.Invisible;
                     return true;
                 case Resource.Id.navigation_table:
                     textMessage.SetText(Resource.String.title_table);
@@ -133,6 +162,7 @@ namespace kalkulačka
                      tableLayout.Visibility = ViewStates.Visible;
                      aboutLayout.Visibility = ViewStates.Invisible;
                      noteLayout.Visibility = ViewStates.Invisible;
+                     feedbackLayout.Visibility = ViewStates.Invisible;
                     return true;
                 case Resource.Id.navigation_feedback:
                     textMessage.SetText(Resource.String.title_feedback);
@@ -142,6 +172,7 @@ namespace kalkulačka
                     tableLayout.Visibility = ViewStates.Invisible;
                     aboutLayout.Visibility = ViewStates.Invisible;
                     noteLayout.Visibility = ViewStates.Invisible;
+                    feedbackLayout.Visibility = ViewStates.Visible;
                     return true;
                 case Resource.Id.navigation_myItens:
                     textMessage.SetText(Resource.String.title_myItems);
@@ -151,6 +182,7 @@ namespace kalkulačka
                      tableLayout.Visibility = ViewStates.Invisible;
                      aboutLayout.Visibility = ViewStates.Invisible;
                      noteLayout.Visibility = ViewStates.Visible;
+                     feedbackLayout.Visibility = ViewStates.Invisible;
                     return true;
   //              case Resource.Id.navigation_notifications:
   //                  textMessage.SetText(Resource.String.title_notifications);
