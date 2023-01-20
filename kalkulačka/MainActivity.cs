@@ -83,7 +83,7 @@ namespace kalkulačka
 
                     var content = new FormUrlEncodedContent(values);
 
-                    var response = await client.PostAsync("https://https://pepa.uvminteractive.com/feedback/save", content);
+                    var response = await client.PostAsync("https://pepa.uvminteractive.com/feedback/save", content);
 
                     var responseString = await response.Content.ReadAsStringAsync();
                 }
