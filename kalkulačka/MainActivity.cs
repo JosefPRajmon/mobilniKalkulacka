@@ -91,7 +91,6 @@ namespace kalkulačka
             catch (System.Exception)
             {
 
-                throw;
             }
         }
 
