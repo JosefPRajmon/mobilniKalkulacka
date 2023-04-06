@@ -85,12 +85,13 @@ namespace kalkulačka
 
                     var response = await client.PostAsync("https://pepa.uvminteractive.com/feedback/save", content);
 
-                    var responseString = await response.Content.ReadAsStringAsync();
+                   // var responseString = await response.Content.ReadAsStringAsync();
                 }
             }
             catch (System.Exception)
             {
 
+                throw;
             }
         }
 
